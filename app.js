@@ -124,18 +124,18 @@ const AES_TIPS = [
 
 /* ---------- 推荐书单 ---------- */
 const BOOK_RECS = [
-  {title:'思考，快与慢',author:'丹尼尔·卡尼曼',cat:'思维',cover:'🧠',color:'#6366f1',tags:['认知心理学','决策'],desc:'诺贝尔经济学奖得主力作，揭示大脑两套思维系统的运作方式，帮你做出更理性的判断。',douban:'https://book.douban.com/subject/10785583/',weread:'https://weread.qq.com/web/search?key=思考快与慢'},
-  {title:'原子习惯',author:'James Clear',cat:'成长',cover:'⚛️',color:'#10b981',tags:['习惯养成','自我管理'],desc:'1%的微小改善，复利效应带来惊人改变。不讲大道理，只讲可执行的系统。',douban:'https://book.douban.com/subject/33441738/',weread:'https://weread.qq.com/web/search?key=原子习惯'},
-  {title:'活着',author:'余华',cat:'文学',cover:'🍂',color:'#f59e0b',tags:['当代文学','苦难'],desc:'一个人和他命运之间的友情。余华用最朴素的语言写尽了生的力量。',douban:'https://book.douban.com/subject/4913064/',weread:'https://weread.qq.com/web/search?key=活着 余华'},
-  {title:'人类简史',author:'尤瓦尔·赫拉利',cat:'历史',cover:'🗿',color:'#ef4444',tags:['大历史','文明'],desc:'从认知革命到科学革命，用宏大的视角重新讲述人类10万年的故事。',douban:'https://book.douban.com/subject/25985021/',weread:'https://weread.qq.com/web/search?key=人类简史'},
-  {title:'非暴力沟通',author:'马歇尔·卢森堡',cat:'沟通',cover:'🕊️',color:'#8b5cf6',tags:['人际关系','沟通技巧'],desc:'用观察+感受+需要+请求的框架，化解冲突，让每一次对话都成为连接。',douban:'https://book.douban.com/subject/3533223/',weread:'https://weread.qq.com/web/search?key=非暴力沟通'},
-  {title:'刻意练习',author:'安德斯·艾利克森',cat:'成长',cover:'🎯',color:'#06b6d4',tags:['学习方法','刻意练习'],desc:'天才不是天生的，是"刻意练习"的结果。揭示从平凡到卓越的真正路径。',douban:'https://book.douban.com/subject/26895993/',weread:'https://weread.qq.com/web/search?key=刻意练习'},
-  {title:'小王子',author:'圣埃克苏佩里',cat:'文学',cover:'🌹',color:'#f97316',tags:['童话','哲学'],desc:'所有的大人都曾经是小孩。用童话的外壳包裹最深刻的人生哲理。',douban:'https://book.douban.com/subject/1084336/',weread:'https://weread.qq.com/web/search?key=小王子'},
-  {title:'原则',author:'瑞·达利欧',cat:'商业',cover:'📐',color:'#3b82f6',tags:['投资','人生哲学'],desc:'桥水基金创始人毕生经验总结，500多条生活与工作的原则，极度坦诚。',douban:'https://book.douban.com/subject/27608239/',weread:'https://weread.qq.com/web/search?key=原则 达利欧'},
-  {title:'被讨厌的勇气',author:'岸见一郎',cat:'心理',cover:'🦁',color:'#eab308',tags:['阿德勒心理学','自我接纳'],desc:'用对话体阐释阿德勒心理学，"课题分离"的概念将改变你看待人际关系的方式。',douban:'https://book.douban.com/subject/26334599/',weread:'https://weread.qq.com/web/search?key=被讨厌的勇气'},
-  {title:'枪炮、病菌与钢铁',author:'贾雷德·戴蒙德',cat:'历史',cover:'🔫',color:'#64748b',tags:['人类学','文明史'],desc:'不同大陆的发展差异到底由什么决定？地理环境比人种差异重要得多。',douban:'https://book.douban.com/subject/26743265/',weread:'https://weread.qq.com/web/search?key=枪炮病菌与钢铁'},
-  {title:'三体',author:'刘慈欣',cat:'科幻',cover:'🪐',color:'#1e40af',tags:['硬科幻','宇宙社会学'],desc:'中国科幻巅峰之作，黑暗森林法则颠覆宇宙观，改编影视全球现象级。',douban:'https://book.douban.com/subject/2567698/',weread:'https://weread.qq.com/web/search?key=三体 刘慈欣'},
-  {title:'影响力',author:'罗伯特·西奥迪尼',cat:'心理',cover:'🎭',color:'#ec4899',tags:['社会心理学','说服'],desc:'互惠、承诺一致、社会认同…六大原则解释为什么你会说"是"，以及如何不被操纵。',douban:'https://book.douban.com/subject/1005576/',weread:'https://weread.qq.com/web/search?key=影响力 西奥迪尼'}
+  {title:'思考，快与慢',author:'丹尼尔·卡尼曼',cat:'思维',cover:'🧠',color:'#6366f1',tags:['认知心理学','决策'],desc:'诺贝尔经济学奖得主力作，揭示大脑两套思维系统的运作方式，帮你做出更理性的判断。',douban:'https://book.douban.com/subject/10785583/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('思考快与慢')},
+  {title:'原子习惯',author:'James Clear',cat:'成长',cover:'⚛️',color:'#10b981',tags:['习惯养成','自我管理'],desc:'1%的微小改善，复利效应带来惊人改变。不讲大道理，只讲可执行的系统。',douban:'https://book.douban.com/subject/33441738/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('原子习惯')},
+  {title:'活着',author:'余华',cat:'文学',cover:'🍂',color:'#f59e0b',tags:['当代文学','苦难'],desc:'一个人和他命运之间的友情。余华用最朴素的语言写尽了生的力量。',douban:'https://book.douban.com/subject/4913064/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('活着 余华')},
+  {title:'人类简史',author:'尤瓦尔·赫拉利',cat:'历史',cover:'🗿',color:'#ef4444',tags:['大历史','文明'],desc:'从认知革命到科学革命，用宏大的视角重新讲述人类10万年的故事。',douban:'https://book.douban.com/subject/25985021/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('人类简史')},
+  {title:'非暴力沟通',author:'马歇尔·卢森堡',cat:'沟通',cover:'🕊️',color:'#8b5cf6',tags:['人际关系','沟通技巧'],desc:'用观察+感受+需要+请求的框架，化解冲突，让每一次对话都成为连接。',douban:'https://book.douban.com/subject/3533223/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('非暴力沟通')},
+  {title:'刻意练习',author:'安德斯·艾利克森',cat:'成长',cover:'🎯',color:'#06b6d4',tags:['学习方法','刻意练习'],desc:'天才不是天生的，是"刻意练习"的结果。揭示从平凡到卓越的真正路径。',douban:'https://book.douban.com/subject/26895993/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('刻意练习')},
+  {title:'小王子',author:'圣埃克苏佩里',cat:'文学',cover:'🌹',color:'#f97316',tags:['童话','哲学'],desc:'所有的大人都曾经是小孩。用童话的外壳包裹最深刻的人生哲理。',douban:'https://book.douban.com/subject/1084336/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('小王子')},
+  {title:'原则',author:'瑞·达利欧',cat:'商业',cover:'📐',color:'#3b82f6',tags:['投资','人生哲学'],desc:'桥水基金创始人毕生经验总结，500多条生活与工作的原则，极度坦诚。',douban:'https://book.douban.com/subject/27608239/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('���则 达利欧')},
+  {title:'被讨厌的勇气',author:'岸见一郎',cat:'心理',cover:'🦁',color:'#eab308',tags:['阿德勒心理学','自我接纳'],desc:'用对话体阐释阿德勒心理学，"课题分离"的概念将改变你看待人际关系的方式。',douban:'https://book.douban.com/subject/26334599/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('被讨厌的勇气')},
+  {title:'枪炮、病菌与钢铁',author:'贾雷德·戴蒙德',cat:'历史',cover:'🔫',color:'#64748b',tags:['人类学','文明史'],desc:'不同大陆的发展差异到底由什么决定？地理环境比人种差异重要得多。',douban:'https://book.douban.com/subject/26743265/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('枪炮病菌与钢铁')},
+  {title:'三体',author:'刘慈欣',cat:'科幻',cover:'🪐',color:'#1e40af',tags:['硬科幻','宇宙社会学'],desc:'中国科幻巅峰之作，黑暗森林法则颠覆宇宙观，改编影视全球现象级。',douban:'https://book.douban.com/subject/2567698/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('三体 刘慈欣')},
+  {title:'影响力',author:'罗伯特·西奥迪尼',cat:'心理',cover:'🎭',color:'#ec4899',tags:['社会心理学','说服'],desc:'互惠、承诺一致、社会认同…六大原则解释为什么你会说"是"，以及如何不被操纵。',douban:'https://book.douban.com/subject/1005576/',weread:'https://weread.qq.com/web/search?key='+encodeURIComponent('影响力 西奥迪尼')}
 ];
 const BOOK_CATS = ['全部','思维','成长','文学','历史','沟通','商业','心理','科幻'];
 
@@ -1514,6 +1514,18 @@ function init(){
     $('#bodyWeight').value=bp.weight||'';
     $('#bodyTarget').value=bp.target||'';
     if(bp.goal) $('#bodyGoal').value=bp.goal;
+  }
+  /* PWA 模式下强制外部链接跳出到系统浏览器 */
+  if(window.matchMedia('(display-mode: standalone)').matches||navigator.standalone){
+    document.addEventListener('click',e=>{
+      const a=e.target.closest('a'); if(!a) return;
+      const href=a.getAttribute('href')||'';
+      /* 只处理站外链接 */
+      if(!href||href.startsWith('#')||href.startsWith('./')||href.startsWith('/')&&!href.startsWith('//')) return;
+      if(href.includes(location.hostname)) return;
+      e.preventDefault();
+      window.open(href,'_blank','noopener,noreferrer');
+    });
   }
   $('#viewDate').textContent=fmtDate();
   renderStreak();
