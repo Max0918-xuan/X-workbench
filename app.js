@@ -1516,15 +1516,17 @@ function init(){
     if(bp.goal) $('#bodyGoal').value=bp.goal;
   }
   /* PWA 模式下强制外部链接跳出到系统浏览器 */
-  if(window.matchMedia('(display-mode: standalone)').matches||navigator.standalone){
+  const isPWA=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+  if(isPWA){
     document.addEventListener('click',e=>{
       const a=e.target.closest('a'); if(!a) return;
       const href=a.getAttribute('href')||'';
-      /* 只处理站外链接 */
-      if(!href||href.startsWith('#')||href.startsWith('./')||href.startsWith('/')&&!href.startsWith('//')) return;
+      /* 只处理站外 http/https 链接 */
+      if(!href||href.startsWith('#')||href.startsWith('javascript:')) return;
       if(href.includes(location.hostname)) return;
       e.preventDefault();
-      window.open(href,'_blank','noopener,noreferrer');
+      /* 用 location.href 代替 window.open — 不会被弹窗拦截器阻止 */
+      location.href=href;
     });
   }
   $('#viewDate').textContent=fmtDate();
