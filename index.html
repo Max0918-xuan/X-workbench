@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#10b981">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="X工作台">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>X 工作台 · 自我提升一站通</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="install-banner" id="installBanner">
+  <div class="install-banner-inner">
+    <span>📲 将 X 工作台安装到桌面，像 App 一样使用</span>
+    <div>
+      <button class="btn btn-sm" id="installBtn">安装</button>
+      <button class="btn-ghost btn-sm" id="installDismiss">✕</button>
+    </div>
+  </div>
+</div>
+<div class="app">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-mark">X</span>
+      <div class="logo-text">
+        <strong>X 工作台</strong>
+        <small>自我提升一站通</small>
+      </div>
+    </div>
+    <nav class="nav-list" id="navList">
+      <button class="nav-item active" data-view="dashboard"><span class="ic">🏠</span><span>首页概览</span></button>
+      <button class="nav-item" data-view="english"><span class="ic">🔤</span><span>英语学习</span></button>
+      <button class="nav-item" data-view="fitness"><span class="ic">💪</span><span>健身减脂</span></button>
+      <button class="nav-item" data-view="aesthetics"><span class="ic">🎨</span><span>美学培养</span></button>
+      <button class="nav-item" data-view="geography"><span class="ic">🌍</span><span>地理学习</span></button>
+      <button class="nav-item" data-view="photography"><span class="ic">📷</span><span>摄影学习</span></button>
+      <button class="nav-item" data-view="reading"><span class="ic">📚</span><span>阅读打卡</span></button>
+      <button class="nav-item" data-view="bilibili"><span class="ic">📺</span><span>B站学习</span></button>
+      <button class="nav-item" data-view="xhs"><span class="ic">📕</span><span>小红书</span></button>
+      <button class="nav-item" data-view="meditation"><span class="ic">🧘</span><span>冥想</span></button>
+      <button class="nav-item" data-view="divination"><span class="ic">🔮</span><span>玄学占卜</span></button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="streak-pill" id="sideStreak">🔥 连续打卡 0 天</div>
+      <small>数据保存在本地浏览器</small>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="viewTitle">首页概览</h1>
+        <span class="sub" id="viewDate"></span>
+      </div>
+      <div class="topbar-right" id="topbarRight"></div>
+    </header>
+
+    <div class="view-container">
+      <!-- 首页概览 -->
+      <section class="view active" id="view-dashboard">
+        <div class="stat-grid" id="dashStats"></div>
+        <div class="dash-row">
+          <div class="card dash-quote">
+            <h3>✨ 每日一言</h3>
+            <blockquote id="dashQuote"></blockquote>
+            <button class="btn-ghost" id="quoteNext">换一句</button>
+          </div>
+          <div class="card">
+            <h3>📅 每日计划</h3>
+            <p class="muted" style="margin-bottom:12px">今天的日程安排</p>
+            <div class="schedule-list" id="dashSchedule"></div>
+          </div>
+        </div>
+        <div class="dash-row">
+          <div class="card dash-quick">
+            <h3>🚀 快捷入口</h3>
+            <div class="quick-grid" id="dashQuick"></div>
+          </div>
+          <div class="card">
+            <h3>📋 今日待办</h3>
+            <div id="dashTasks"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 英语学习 -->
+      <section class="view" id="view-english">
+        <div class="card">
+          <h3>🃏 单词卡片</h3>
+          <div class="flashcard-wrap">
+            <div class="flashcard" id="flashcard">
+              <div class="fc-face fc-front">
+                <span class="fc-hint">点击翻面</span>
+                <span class="fc-word" id="fcWord"></span>
+                <span class="fc-phonetic" id="fcPhonetic"></span>
+                <div class="fc-phrases" id="fcPhrases"></div>
+                <button class="fc-audio-btn" id="fcAudio">🔊 听发音</button>
+              </div>
+              <div class="fc-face fc-back"><span class="fc-hint">点击翻回</span><span class="fc-meaning" id="fcMeaning"></span></div>
+            </div>
+          </div>
+          <div class="fc-controls">
+            <button class="btn" id="fcPrev">‹ 上一个</button>
+            <span id="fcIndex" class="fc-index"></span>
+            <button class="btn" id="fcNext">下一个 ›</button>
+            <button class="btn-ghost" id="fcMark">✓ 标记已掌握</button>
+            <button class="btn-ghost" id="fcShuffle">🔀 打乱</button>
+            <a class="fc-link" id="fcLearn" href="#" target="_blank" rel="noopener" style="margin-left:auto">📖 查看用法</a>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>➕ 添加单词 <span class="muted" style="font-size:11px;font-weight:400">— 输入单词，自动获取音标和词组</span></h3>
+            <div class="form-row">
+              <input type="text" id="addWord" placeholder="输入英文单词（如：perseverance）" style="flex:1">
+              <button class="btn" id="addWordBtn">🔍 查询并添加</button>
+            </div>
+            <div id="wordFetchStatus" style="margin-top:8px;font-size:13px"></div>
+          </div>
+          <div class="card">
+            <h3>📈 学习进度</h3>
+            <div id="engProgress"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📒 单词本 <span class="muted" id="wordCount"></span></h3>
+          <input type="text" class="search-input" id="wordSearch" placeholder="搜索单词、释义或音标…">
+          <div class="word-list-hd" style="display:flex;gap:8px;font-size:11px;color:var(--muted);padding:0 14px 6px;font-weight:600">
+            <span style="width:120px">单词 / 音标</span><span style="flex:1">释义</span><span style="width:130px">词组</span><span style="width:65px">状态</span>
+          </div>
+          <div class="word-list" id="wordList"></div>
+        </div>
+        <div class="card">
+          <h3>🗣️ 口语实战</h3>
+          <div class="scene-tabs" id="sceneTabs"></div>
+          <div id="sceneContent"></div>
+        </div>
+        <div class="card">
+          <h3>🎬 看剧学英语</h3>
+          <p class="muted" style="margin-bottom:12px">精选适合学英语的美剧与动画，按难度分级</p>
+          <div id="showGrid"></div>
+        </div>
+      </section>
+
+      <!-- 健身减脂 -->
+      <section class="view" id="view-fitness">
+        <div class="card">
+          <h3>🩺 身体档案</h3>
+          <p class="muted" style="margin-bottom:14px">填写你的身体数据，系统将为你定制专属健身方案</p>
+          <div class="body-profile">
+            <div class="body-field">
+              <label>身高 (cm)</label>
+              <input type="number" id="bodyHeight" placeholder="如 170" min="100" max="250" step="0.1">
+            </div>
+            <div class="body-field">
+              <label>当前体重 (kg)</label>
+              <input type="number" id="bodyWeight" placeholder="如 65" min="30" max="200" step="0.1">
+            </div>
+            <div class="body-field">
+              <label>目标体重 (kg)</label>
+              <input type="number" id="bodyTarget" placeholder="如 58" min="30" max="200" step="0.1">
+            </div>
+            <div class="body-field">
+              <label>健身目标</label>
+              <select id="bodyGoal">
+                <option value="lose">减脂塑形</option>
+                <option value="muscle">增肌增重</option>
+                <option value="tone">线条紧致</option>
+                <option value="keep">维持健康</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" id="bodySaveBtn">💪 生成我的专属方案</button>
+          <div id="bodyProfileCard" style="margin-top:12px"></div>
+        </div>
+        <div class="card" id="planCard" style="display:none">
+          <h3>📋 我的健身方案 <span class="muted" id="planMeta"></span></h3>
+          <div class="plan-week" id="planWeek"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>⚖️ 体重趋势</h3>
+            <div id="weightChart"></div>
+            <div class="form-row">
+              <input type="date" id="weightDate">
+              <input type="number" id="weightVal" placeholder="体重 kg" step="0.1">
+              <button class="btn" id="addWeightBtn">记录</button>
+            </div>
+            <div class="weight-list" id="weightList"></div>
+          </div>
+          <div class="card">
+            <h3>🏃 训练计划打卡</h3>
+            <div class="form-row">
+              <input type="text" id="addWorkout" placeholder="如：帕梅拉10分钟燃腹">
+              <button class="btn" id="addWorkoutBtn">加入计划</button>
+            </div>
+            <div class="workout-list" id="workoutList"></div>
+            <div class="week-stat" id="weekStat"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>💡 减脂小贴士</h3>
+          <div class="tips-list" id="fitTips"></div>
+        </div>
+      </section>
+
+      <!-- 美学培养 -->
+      <section class="view" id="view-aesthetics">
+        <div class="card">
+          <h3>🎨 配色灵感生成器</h3>
+          <div class="palette" id="palette"></div>
+          <div class="palette-controls">
+            <button class="btn" id="paletteGen">🎲 重新生成</button>
+            <button class="btn-ghost" id="paletteMode">模式：随机</button>
+            <button class="btn-ghost" id="paletteCopy">复制色值</button>
+            <a class="pal-learn" href="https://search.bilibili.com/all?keyword=%E9%85%8D%E8%89%B2%E7%90%86%E8%AE%BA+%E8%89%B2%E5%BD%A9%E6%90%AD%E9%85%8D" target="_blank" rel="noopener">🎨 学配色理论</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>👔 服装搭配法则</h3>
+          <p class="muted" style="margin-bottom:14px">日常穿搭的美学公式——色彩、体型、场合</p>
+          <div class="fashion-grid" id="fashionGrid"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🖼️ 灵感图集</h3>
+            <p class="muted">点击进入精选美学资源</p>
+            <div class="gallery" id="gallery"></div>
+          </div>
+          <div class="card">
+            <h3>🏡 生活美学</h3>
+            <p class="muted" style="margin-bottom:8px">发现日常中的审美</p>
+            <div class="life-aes-grid" id="lifeAesGrid"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>💡 每日美学建议</h3>
+          <div class="tips-list" id="aesTips"></div>
+        </div>
+        <div class="card">
+          <h3>📓 心情板笔记</h3>
+          <div class="form-row">
+            <input type="text" id="boardInput" placeholder="记下此刻的灵感与感受…">
+            <button class="btn" id="boardAddBtn">记录</button>
+          </div>
+          <div class="board-list" id="boardList"></div>
+        </div>
+      </section>
+
+      <!-- 地理学习 -->
+      <section class="view" id="view-geography">
+        <div class="card">
+          <h3>🎬 地理纪录片资源库</h3>
+          <p class="muted" style="margin-bottom:16px">精选高分地理纪录片，足不出户看世界</p>
+          <div class="geo-docs-grid" id="geoDocs"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🗺️ 探索大洲</h3>
+            <p class="muted" style="margin-bottom:12px">点击查看各洲信息</p>
+            <div class="cont-cards" id="contCards"></div>
+            <div id="contDetail"></div>
+          </div>
+          <div class="card">
+            <h3>💡 每日地理知识</h3>
+            <div id="geoTip"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 阅读打卡 -->
+      <section class="view" id="view-reading">
+        <div class="stat-grid" id="readStats"></div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🌟 推荐书单</h3>
+            <p class="muted" style="margin-bottom:12px">各领域精选好书，点击直达阅读平台</p>
+            <div class="filter-chips" id="bookCatFilters"></div>
+            <div class="book-rec-grid" id="bookRecGrid"></div>
+          </div>
+          <div class="card">
+            <h3>🔍 搜书直达</h3>
+            <p class="muted" style="margin-bottom:12px">搜索你想读的书，一键打开阅读</p>
+            <div class="book-search-row">
+              <input type="text" class="search-input" id="bookSearchInput" placeholder="输入书名或作者…" style="margin-bottom:0">
+              <button class="btn" id="bookSearchBtn">搜索</button>
+            </div>
+            <div class="book-search-results" id="bookSearchResults">
+              <p class="muted">输入关键词后显示搜索结果</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>📖 书架</h3>
+            <div class="form-row">
+              <input type="text" id="addBook" placeholder="书名">
+              <input type="text" id="addAuthor" placeholder="作者（可选）">
+              <button class="btn" id="addBookBtn">加入书架</button>
+            </div>
+            <div class="book-list" id="bookList"></div>
+          </div>
+          <div class="card">
+            <h3>✅ 今日阅读打卡</h3>
+            <div class="checkin-box" id="checkinBox"></div>
+            <div class="form-row">
+              <input type="number" id="readMinutes" placeholder="阅读分钟数" min="0">
+              <button class="btn" id="checkinBtn">打卡</button>
+            </div>
+            <h4 class="sub-h">阅读笔记</h4>
+            <div class="form-row">
+              <input type="text" id="noteInput" placeholder="摘录或感悟…">
+              <button class="btn-ghost" id="noteAddBtn">保存</button>
+            </div>
+            <div class="note-list" id="noteList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 摄影学习 -->
+      <section class="view" id="view-photography">
+        <div class="card">
+          <h3>📸 作品分析</h3>
+          <p class="muted" style="margin-bottom:14px">上传你的摄影作品，获取构图、色彩、曝光等多维度评价与改进建议</p>
+          <div class="photo-upload" id="photoUpload">
+            <span class="pu-icon">📤</span>
+            <span class="pu-text">点击上传照片</span>
+            <span class="pu-hint">支持 JPG / PNG，建议 2000px 以内</span>
+          </div>
+          <input type="file" id="photoInput" accept="image/*" style="display:none">
+          <div class="photo-preview" id="photoPreview" style="display:none">
+            <img id="photoImg" src="" alt="预览">
+            <button class="pp-remove" id="photoRemove">✕</button>
+          </div>
+          <div id="photoAnalysis" style="display:none">
+            <div class="analysis-score" id="analysisScore"></div>
+            <div class="photo-analysis" id="analysisGrid"></div>
+            <div class="analysis-advice" id="analysisAdvice"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📐 摄影基础知识</h3>
+          <p class="muted" style="margin-bottom:14px">从零开始学摄影——曝光三角、构图法则与实用技巧</p>
+          <div class="knowledge-grid" id="knowledgeGrid"></div>
+        </div>
+      </section>
+
+      <!-- B站学习 -->
+      <section class="view" id="view-bilibili">
+        <div class="card">
+          <div class="bili-head">
+            <h3>📺 B站学习资源库</h3>
+            <span class="muted" id="biliCount"></span>
+          </div>
+          <div class="form-row">
+            <input type="text" class="search-input" id="biliSearch" placeholder="搜索UP主 / 关键词…">
+            <div class="filter-chips" id="biliFilters"></div>
+          </div>
+          <div class="bili-grid" id="biliGrid"></div>
+          <div class="add-bili">
+            <h4 class="sub-h">➕ 添加自己的学习视频</h4>
+            <div class="form-row">
+              <input type="text" id="biliAddTitle" placeholder="视频/UP主名称">
+              <select id="biliAddCat">
+                <option value="english">英语学习</option>
+                <option value="fitness">健身减脂</option>
+                <option value="aesthetics">美学培养</option>
+                <option value="geography">地理学习</option>
+                <option value="photography">摄影学习</option>
+                <option value="reading">阅读</option>
+                <option value="xhs">小红书</option>
+                <option value="meditation">冥想</option>
+                <option value="divination">玄学占卜</option>
+                <option value="other">其他</option>
+              </select>
+              <input type="text" id="biliAddUrl" placeholder="B站链接（space/video/search 均可）">
+              <button class="btn" id="biliAddBtn">添加</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 小红书 -->
+      <section class="view" id="view-xhs">
+        <div class="card">
+          <h3>📕 小红书学习资源</h3>
+          <p class="muted" style="margin-bottom:16px">精选小红书上的知识博主和学习资源，按主题分类，点击直达搜索</p>
+          <div class="filter-chips" id="xhsCatFilters"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🔍 搜小红书</h3>
+            <p class="muted" style="margin-bottom:12px">在网页版小红书搜索学习相关内容</p>
+            <div class="book-search-row">
+              <input type="text" class="search-input" id="xhsSearchInput" placeholder="搜索关键词（如：英语学习方法）" style="margin-bottom:0">
+              <button class="btn" id="xhsSearchBtn">搜索</button>
+            </div>
+            <div class="book-search-results" id="xhsSearchResults">
+              <p class="muted">输入关键词后显示搜索入口</p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>🔥 热门学习话题</h3>
+            <p class="muted" style="margin-bottom:12px">小红书最受欢迎的学习成长话题</p>
+            <div class="xhs-trending" id="xhsTrending"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>👤 推荐博主</h3>
+          <p class="muted" style="margin-bottom:14px">各领域优质知识博主，点击查看主页</p>
+          <div class="xhs-blogger-grid" id="xhsBloggerGrid"></div>
+        </div>
+      </section>
+
+      <!-- 冥想 -->
+      <section class="view" id="view-meditation">
+        <div class="card">
+          <h3>🧘 呼吸练习 · 定时器</h3>
+          <p class="muted" style="margin-bottom:14px">跟随指引进行深呼吸，每次呼吸都是一次身心的清零</p>
+          <div class="breath-container" id="breathContainer">
+            <div class="breath-circle" id="breathCircle">
+              <span class="breath-text" id="breathText">准备</span>
+              <span class="breath-counter" id="breathCounter">00:00</span>
+            </div>
+          </div>
+          <div class="breath-controls">
+            <select id="breathPattern">
+              <option value="box">盒式呼吸 (4-4-4-4)</option>
+              <option value="478">4-7-8 放松呼吸</option>
+              <option value="simple">简单腹式 (4-6)</option>
+              <option value="calm">平静呼吸 (5-5)</option>
+            </select>
+            <input type="number" id="breathMinutes" value="3" min="1" max="20" style="width:70px" title="分钟">
+            <span class="muted" style="font-size:13px">分钟</span>
+            <button class="btn" id="breathStartBtn">▶ 开始</button>
+            <button class="btn-ghost" id="breathStopBtn" style="display:none">⏸ 停止</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🌿 冥想练习指引</h3>
+          <p class="muted" style="margin-bottom:14px">不同类型的冥想练习，选择适合你当下状态的</p>
+          <div class="meditation-grid" id="meditationGrid"></div>
+        </div>
+        <div class="card">
+          <h3>🕯️ 冥想环境建议</h3>
+          <p class="muted" style="margin-bottom:14px">营造一个适合冥想的空间</p>
+          <div class="meditation-tips" id="meditationTips"></div>
+        </div>
+      </section>
+
+      <!-- 玄学占卜 -->
+      <section class="view" id="view-divination">
+        <div class="card">
+          <h3>🃏 塔罗牌图鉴 · 大阿尔卡纳 22 张</h3>
+          <p class="muted" style="margin-bottom:14px">点击卡牌查看正位/逆位详细解读，每一张牌都藏着人生的智慧</p>
+          <div class="tarot-grid" id="tarotGrid"></div>
+          <div class="tarot-detail" id="tarotDetail" style="display:none"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🖐️ 小六壬 · 掌诀速查</h3>
+            <p class="muted" style="margin-bottom:14px">传统民间占卜法：大安·留连·速喜·赤口·小吉·空亡</p>
+            <div class="xlr-grid" id="xlrGrid"></div>
+          </div>
+          <div class="card">
+            <h3>🎲 每日一占</h3>
+            <p class="muted" style="margin-bottom:12px">心中默念问题，点击抽取今日指引</p>
+            <button class="btn" id="dailyDrawBtn" style="width:100%;padding:18px;font-size:16px;margin-bottom:12px">🔮 抽取今日指引</button>
+            <div class="daily-draw-result" id="dailyDrawResult">
+              <p class="muted" style="text-align:center;padding:30px 0">静心片刻，再点击抽取…</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📜 玄学入门指南</h3>
+          <p class="muted" style="margin-bottom:14px">适合新手了解的基础玄学体系与学习路径</p>
+          <div class="divination-guide" id="divinationGuide"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
