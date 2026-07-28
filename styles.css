@@ -537,6 +537,18 @@ input,select{font-family:inherit;outline:none}
 .dg-link{display:inline-flex;align-items:center;gap:3px;padding:5px 12px;background:var(--brand-lt);color:var(--brand2);border-radius:7px;font-size:11px;font-weight:600;text-decoration:none;transition:.16s}
 .dg-link:hover{background:var(--brand);color:#fff}
 
+/* 小红书链接联动样式 */
+.xhs-link{background:#fff0f3;color:#ff2442;border-color:#ffe0e5}
+.xhs-link:hover{background:#ff2442;color:#fff;border-color:#ff2442}
+.xhs-deep{background:#fff0f3;color:#ff2442}
+.xhs-deep:hover{background:#ff2442;color:#fff}
+.br-link.xhs{background:#fff0f3;color:#ff2442;border-color:#ffe0e5}
+.br-link.xhs:hover{background:#ff2442;color:#fff}
+/* 并排链接在 PWA/移动端自动换行 */
+.tip.clickable,.fashion-card,.life-aes-card{display:inline-flex!important;vertical-align:top}
+.fashion-card{width:calc(50% - 6px);margin:3px}
+@media(max-width:640px){.fashion-card,.life-aes-card{width:100%;margin:3px 0}}
+
 /* 响应式：新模块 */
 @media(max-width:980px){
   .tarot-meaning-columns{grid-template-columns:1fr}
