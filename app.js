@@ -65,6 +65,7 @@ const CAT_META = {
   other:{label:'其他',color:'#64748b',ic:'🔖'}
 };
 const biliUrl = name=> `https://search.bilibili.com/all?keyword=${encodeURIComponent(name)}`;
+const xhsUrl = name=> `https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(name)}`;
 
 /* ---------- 默认素材 ---------- */
 const DEFAULT_WORDS = [
@@ -376,12 +377,12 @@ const XLR_POSITIONS = [
 ];
 /* ---------- 玄学入门指南 ---------- */
 const DIVINATION_GUIDE = [
-  {icon:'🃏',title:'塔罗牌',desc:'78张牌分大阿尔卡纳(22)+小阿尔卡纳(56)。韦特塔罗是入门首选，牌面图案直观清晰。学习路径：认识牌义→练习三牌阵→每日一抽→进阶牌阵。',link:'https://search.bilibili.com/all?keyword=塔罗牌新手入门'},
-  {icon:'🖐️',title:'小六壬',desc:'中国传统占卜术，通过农历月日时三个数字在手掌六个位置推算吉凶。极其简单——只需一只手、三个数字。掌诀顺序：大安(1)→留连(2)→速喜(3)→赤口(4)→小吉(5)→空亡(6)。',link:'https://search.bilibili.com/all?keyword=小六壬教学'},
-  {icon:'☯️',title:'八字命理',desc:'根据出生年月日时排八字(四柱)，分析五行生克、十神关系，是最系统的人生分析工具。入门门槛较高，推荐从《子平真诠》开始。',link:'https://search.bilibili.com/all?keyword=八字入门教学'},
-  {icon:'🌠',title:'星座星盘',desc:'西方占星学，需要出生日期+时间+地点排星盘。分析行星落入的星座和宫位。12星座只是太阳星座（最基础的）。',link:'https://search.bilibili.com/all?keyword=星盘入门教学'},
-  {icon:'📖',title:'周易六爻',desc:'最古老的占卜体系之一，通过三枚铜钱六次摇卦。易学界的"硬通货"——需要扎实的卦象和经文基础。推荐《周易》入门+配合《周易译注》。',link:'https://search.bilibili.com/all?keyword=周易六爻入门'},
-  {icon:'🎴',title:'雷诺曼卡牌',desc:'36张牌的小巧占卜系统，比塔罗更直接务实。每张牌有具体象征（如船=旅行、信=消息），解读直接不绕弯，适合实际问题占卜。',link:'https://search.bilibili.com/all?keyword=雷诺曼新手教学'}
+  {icon:'🃏',title:'塔罗牌',desc:'78张牌分大阿尔卡纳(22)+小阿尔卡纳(56)。韦特塔罗是入门首选，牌面图案直观清晰。学习路径：认识牌义→练习三牌阵→每日一抽→进阶牌阵。',link:'https://search.bilibili.com/all?keyword=塔罗牌新手入门',xhs:xhsUrl('塔罗牌 新手入门')},
+  {icon:'🖐️',title:'小六壬',desc:'中国传统占卜术，通过农历月日时三个数字在手掌六个位置推算吉凶。极其简单——只需一只手、三个数字。掌诀顺序：大安(1)→留连(2)→速喜(3)→赤口(4)→小吉(5)→空亡(6)。',link:'https://search.bilibili.com/all?keyword=小六壬教学',xhs:xhsUrl('小六壬 教学')},
+  {icon:'☯️',title:'八字命理',desc:'根据出生年月日时排八字(四柱)，分析五行生克、十神关系，是最系统的人生分析工具。入门门槛较高，推荐从《子平真诠》开始。',link:'https://search.bilibili.com/all?keyword=八字入门教学',xhs:xhsUrl('八字 入门教学')},
+  {icon:'🌠',title:'星座星盘',desc:'西方占星学，需要出生日期+时间+地点排星盘。分析行星落入的星座和宫位。12星座只是太阳星座（最基础的）。',link:'https://search.bilibili.com/all?keyword=星盘入门教学',xhs:xhsUrl('星盘 入门教学')},
+  {icon:'📖',title:'周易六爻',desc:'最古老的占卜体系之一，通过三枚铜钱六次摇卦。易学界的"硬通货"——需要扎实的卦象和经文基础。推荐《周易》入门+配合《周易译注》。',link:'https://search.bilibili.com/all?keyword=周易六爻入门',xhs:xhsUrl('周易六爻 入门')},
+  {icon:'🎴',title:'雷诺曼卡牌',desc:'36张牌的小巧占卜系统，比塔罗更直接务实。每张牌有具体象征（如船=旅行、信=消息），解读直接不绕弯，适合实际问题占卜。',link:'https://search.bilibili.com/all?keyword=雷诺曼新手教学',xhs:xhsUrl('雷诺曼 新手')}
 ];
 
 /* ============================================================
@@ -648,7 +649,7 @@ function renderShows(){
         <span class="show-title">${esc(s.title)} <small style="font-weight:400;color:var(--muted)">${esc(s.en)}</small></span>
         <p class="show-meta">📺 ${esc(s.seasons)} · ⏱ ${esc(s.eps)}</p>
         <p class="show-why">${esc(s.why)}</p>
-        <a class="show-link" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(s.title)}" target="_blank" rel="noopener">🔍 搜索资源</a>
+        <a class="show-link" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(s.title)}" target="_blank" rel="noopener">📺 B站</a> <a class="show-link" style="margin-left:6px" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(s.title)}" target="_blank" rel="noopener">📕 小红书</a>
       </div>`).join('')}</div></div>`;
   }).join('');
 }
@@ -780,7 +781,7 @@ function renderPlan(){
           <div class="ex-detail">
             <span class="ex-name">${esc(e.name)}</span>
             <span class="ex-spec">${esc(e.spec)}</span>
-            <a class="ex-deep" href="${biliUrl(e.name+' 动作教学')}" target="_blank" rel="noopener" title="在B站看「${e.name}」视频演示">🎬 动作演示</a>
+            <a class="ex-deep" href="${biliUrl(e.name+' 动作教学')}" target="_blank" rel="noopener">🎬 B站</a> <a class="ex-deep xhs-deep" href="${xhsUrl(e.name+' 动作教学')}" target="_blank" rel="noopener">📕 小红书</a>
             <div class="ex-form" data-exform="${i}">
               <div class="ex-form-body">${e.form}</div>
               ${e.tips?`<span class="ex-form-tip">💡 ${esc(e.tips)}</span>`:''}
@@ -824,7 +825,7 @@ function renderFitness(){
     </div>`).join('')||'<p class="muted">还没有训练计划，加一个吧</p>';
   const wkDone=wos.filter(w=>w.done&&within7(w.doneDate)).length;
   $('#weekStat').innerHTML=`本周已完成 <b style="color:var(--c-fit)">${wkDone}</b> 次训练，目标 4-5 次/周。${wkDone>=4?'💪 优秀，继续保持！':'继续加油，动起来！'}`;
-  $('#fitTips').innerHTML=FIT_TIPS.map(t=>`<a class="tip clickable" href="${biliUrl(t[0]+' 健身科普')}" target="_blank" rel="noopener" title="🔍 深入学习「${t[0]}」"><b>${t[0]}</b>：${t[1]}<span class="tip-link">→ 学习</span></a>`).join('');
+  $('#fitTips').innerHTML=FIT_TIPS.map(t=>`<a class="tip clickable" href="${biliUrl(t[0]+' 健身科普')}" target="_blank" rel="noopener" style="flex:0 0 auto">📺<b>${t[0]}</b>：${t[1]}<span class="tip-link">B站</span></a> <a class="tip clickable" href="${xhsUrl(t[0]+' 健身')}" target="_blank" rel="noopener" style="flex:0 0 auto"><b>${t[0]}</b>：${t[1]}<span class="tip-link">📕 小红书</span></a>`).join('');
 }
 function drawWeightChart(ws){
   const box=$('#weightChart'); if(!ws.length){ box.innerHTML='<p class="muted" style="padding:30px 0;text-align:center">记录体重后这里会显示趋势折线图</p>'; return; }
@@ -865,10 +866,12 @@ function renderAesthetics(){
     ['设计师IORI','经典配色解析',CAT_META.aesthetics.color,'aesthetics'],
     ['oooooohmygosh','字体设计观念',CAT_META.aesthetics.color,'aesthetics'],
     ['故宫博物院','云看展·文物之美','#c0392b','reading']
-  ].map(g=>`<a class="gal-card" href="${biliUrl(g[0])}" target="_blank" rel="noopener">
+  ].map(g=>`<a class="gal-card" href="${biliUrl(g[0])}" target="_blank" rel="noopener" title="📺 B站搜「${g[0]}」">
     <div class="gal-thumb" style="background:linear-gradient(135deg,${g[2]},${shade(g[2],-25)})">${CAT_META[g[3]]?.ic||'🎨'}</div>
-    <div class="gal-body"><b>${g[0]}</b><small>${g[1]}</small></div></a>`).join('');
-  $('#aesTips').innerHTML=AES_TIPS.map(t=>`<a class="tip clickable" href="${biliUrl(t[0]+' 美学设计')}" target="_blank" rel="noopener" title="🔍 深入学习「${t[0]}」"><b>${t[0]}</b>：${t[1]}<span class="tip-link">→ 深入学习</span></a>`).join('');
+    <div class="gal-body"><b>${g[0]}</b><small>${g[1]}</small></div></a><a class="gal-card" href="${xhsUrl(g[0])}" target="_blank" rel="noopener" title="📕 小红书搜「${g[0]}」">
+    <div class="gal-thumb" style="background:linear-gradient(135deg,#ff2442,#c01030)">📕</div>
+    <div class="gal-body"><b>${g[0]}</b><small>小红书搜更多</small></div></a>`).join('');
+  $('#aesTips').innerHTML=AES_TIPS.map(t=>`<a class="tip clickable" href="${biliUrl(t[0]+' 美学设计')}" target="_blank" rel="noopener" style="flex:0 0 auto">📺<b>${t[0]}</b>：${t[1]}<span class="tip-link">B站</span></a> <a class="tip clickable" href="${xhsUrl(t[0]+' 美学')}" target="_blank" rel="noopener" style="flex:0 0 auto"><b>${t[0]}</b>：${t[1]}<span class="tip-link">📕 小红书</span></a>`).join('');
   renderBoard();
 }
 function shade(hex,p){ const c=hex.replace('#',''); const n=parseInt(c,16); let r=(n>>16)+p,g=((n>>8)&255)+p,b=(n&255)+p; r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b)); return '#'+((r<<16)|(g<<8)|b).toString(16).padStart(6,'0'); }
@@ -942,7 +945,7 @@ function renderGeography(){
       <b>${esc(d.title)}${d.en?` <small style="font-weight:400;color:var(--muted)">${esc(d.en)}</small>`:''}</b>
       <p class="geo-doc-meta">🎬 ${esc(d.eps)} · ⏱ ${esc(d.dur)}</p>
       <p class="geo-doc-desc">${esc(d.desc)}</p>
-      <a class="geo-doc-link" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(d.title)}" target="_blank" rel="noopener">🔍 B站搜索</a>
+      <a class="geo-doc-link" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(d.title)}" target="_blank" rel="noopener">📺 B站</a> <a class="geo-doc-link" href="${xhsUrl(d.title)}" target="_blank" rel="noopener">📕 小红书</a>
     </div>
   </div>`).join('');
   /* 探索大洲 */
@@ -952,7 +955,7 @@ function renderGeography(){
     <b>${GEO_TIPS[geoTipIdx][0]}</b>
     <p>${GEO_TIPS[geoTipIdx][1]}</p>
     <div class="geo-tip-actions"><span>${geoTipIdx+1} / ${GEO_TIPS.length}</span><button id="geoNextTip">下一条 →</button></div>
-    <a class="gt-learn" href="${biliUrl(GEO_TIPS[geoTipIdx][0]+' 地理纪录片')}" target="_blank" rel="noopener">📺 看相关纪录片</a>
+    <a class="gt-learn" href="${biliUrl(GEO_TIPS[geoTipIdx][0]+' 地理纪录片')}" target="_blank" rel="noopener">📺 B站纪录片</a> <a class="gt-learn" href="${xhsUrl(GEO_TIPS[geoTipIdx][0]+' 地理科普')}" target="_blank" rel="noopener">📕 小红书科普</a>
   </div>`;
 }
 function renderContinent(){
@@ -969,7 +972,7 @@ function renderContinent(){
         <div class="cont-stat"><span>人口</span><b>${c.pop}</b></div>
         <div class="cont-stat"><span>最高点</span><b>${c.highest}</b></div>
         <p class="cont-fact">📌 ${c.fact}</p>
-        <a class="card-deep-link" href="${biliUrl(c.name+' 航拍 纪录片')}" target="_blank" rel="noopener">🎬 搜「${c.name}」相关纪录片 <small>→</small></a>
+        <a class="card-deep-link" href="${biliUrl(c.name+' 航拍 纪录片')}" target="_blank" rel="noopener">🎬 搜「${c.name}」纪录片</small></a> <a class="card-deep-link" href="${xhsUrl(c.name+' 旅行攻略')}" target="_blank" rel="noopener">📕 小红书攻略 <small>→</small></a>
       </div>
     </div>`;
 }
@@ -982,22 +985,30 @@ document.addEventListener('click',e=>{
    美学：服装搭配 & 生活美学
    ============================================================ */
 function renderFashion(){
-  $('#fashionGrid').innerHTML=FASHIONS.map(f=>`<a class="clickable-card fashion-card" href="${biliUrl(f.title+' 穿搭教程')}" target="_blank" rel="noopener" title="🔍 点击在B站搜索「${f.title}」相关教程">
+  $('#fashionGrid').innerHTML=FASHIONS.map(f=>`<a class="clickable-card fashion-card" href="${biliUrl(f.title+' 穿搭教程')}" target="_blank" rel="noopener" title="📺 在B站学「${f.title}」">
       <div class="fashion-card-hd" style="background:${f.color}"><span>${f.icon}</span>${f.title}</div>
       <div class="fashion-card-body">
         <p>${f.desc}</p>
         ${f.palette.length?`<div class="fashion-palette">${f.palette.map(c=>`<div class="fashion-swatch" style="background:${c}" title="${c}"></div>`).join('')}</div>`:''}
         ${f.tip?`<div class="fashion-tip">💡 ${f.tip}</div>`:''}
       </div>
+    </a><a class="clickable-card fashion-card" href="${xhsUrl(f.title+' 穿搭')}" target="_blank" rel="noopener" title="📕 在小红书搜「${f.title}」">
+      <div class="fashion-card-hd" style="background:#ff2442"><span>📕</span>${f.title}</div>
+      <div class="fashion-card-body"><p>在小红书发现更多「${f.title}」穿搭灵感和实拍</p></div>
     </a>`).join('');
 }
 
 function renderLifeAes(){
-  $('#lifeAesGrid').innerHTML=LIFE_AES.map(a=>`<a class="clickable-card life-aes-card" href="${biliUrl(a.title+' 入门教程')}" target="_blank" rel="noopener" title="🔍 点击学习「${a.title}」更多内容">
+  $('#lifeAesGrid').innerHTML=LIFE_AES.map(a=>`<a class="clickable-card life-aes-card" href="${biliUrl(a.title+' 入门教程')}" target="_blank" rel="noopener" title="📺 在B站学「${a.title}」">
     <span class="la-icon">${a.icon}</span>
     <span class="la-title">${a.title}</span>
     <span class="la-desc">${a.desc}</span>
-    <span class="la-learn">🔍 探索更多 →</span>
+    <span class="la-learn">📺 B站探索 →</span>
+  </a><a class="clickable-card life-aes-card" href="${xhsUrl(a.title+' 入门')}" target="_blank" rel="noopener" title="📕 在小红书搜「${a.title}」">
+    <span class="la-icon">📕</span>
+    <span class="la-title">${a.title}</span>
+    <span class="la-desc">小红书发现更多「${a.title}」灵感</span>
+    <span class="la-learn">📕 小红书探索 →</span>
   </a>`).join('');
 }
 
@@ -1023,7 +1034,7 @@ function renderBookRecs(){
         <div class="br-links">
           <a class="br-link weread" href="${b.weread}" target="_blank" rel="noopener">📖 微信读书</a>
           <a class="br-link douban" href="${b.douban}" target="_blank" rel="noopener">⭐ 豆瓣</a>
-          <a class="br-link bilibili" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(b.title+' 解读')}" target="_blank" rel="noopener">📺 B站解读</a>
+          <a class="br-link bilibili" href="https://search.bilibili.com/all?keyword=${encodeURIComponent(b.title+' 解读')}" target="_blank" rel="noopener">📺 B站</a> <a class="br-link xhs" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(b.title+' 书评')}" target="_blank" rel="noopener">📕 小红书</a>
         </div>
       </div>
     </div>`).join('');
@@ -1051,7 +1062,12 @@ function doBookSearch(){
     </a>
     <a class="bsr-item" href="https://search.bilibili.com/all?keyword=${kw}+书评" target="_blank" rel="noopener">
       <span style="font-size:24px">📺</span>
-      <div class="bsr-info"><b>在B站搜索「${esc(q)}」书评/解读</b><small>视频解读，快速了解一本书的精华</small></div>
+      <div class="bsr-info"><b>B站搜「${esc(q)}」书评</b><small>视频解读</small></div>
+      <span style="font-size:18px">→</span>
+    </a>
+    <a class="bsr-item" href="https://www.xiaohongshu.com/search_result?keyword=${kw}" target="_blank" rel="noopener">
+      <span style="font-size:24px">📕</span>
+      <div class="bsr-info"><b>小红书搜「${esc(q)}」书评</b><small>图文读书笔记</small></div>
       <span style="font-size:18px">→</span>
     </a>
     <div style="margin-top:10px;font-size:12px;color:var(--muted);text-align:center">💡 点击以上链接可直接跳转到对应平台阅读或了解这本书</div>`;
@@ -1066,7 +1082,7 @@ function renderPhotography(){
     <div class="know-card">
       <div class="know-card-hd" style="background:${k.color}"><span style="font-size:20px">${k.icon}</span>${k.title}</div>
       <div class="know-card-body"><ul>${k.content.map(c=>`<li>${c}</li>`).join('')}</ul></div>
-      <div class="know-link"><a href="${biliUrl(k.title+' 摄影教程')}" target="_blank" rel="noopener">📺 查看「${k.title}」视频详解 →</a></div>
+      <div class="know-link"><a href="${biliUrl(k.title+' 摄影教程')}" target="_blank" rel="noopener">📺 B站看「${k.title}」→</a> <a href="${xhsUrl(k.title+' 摄影教程')}" target="_blank" rel="noopener">📕 小红书学「${k.title}」→</a></div>
     </div>`).join('');
 }
 
@@ -1323,7 +1339,7 @@ function renderMeditation(){
           <span class="med-dur">⏱ ${m.dur}</span>
         </div>
         <p>${m.desc}</p>
-        <a class="med-learn-link" href="${biliUrl(m.title+' 冥想引导')}" target="_blank" rel="noopener">🎧 找引导音频 →</a>
+        <a class="med-learn-link" href="${biliUrl(m.title+' 冥想引导')}" target="_blank" rel="noopener">🎧 B站引导 →</a> <a class="med-learn-link" href="${xhsUrl(m.title+' 冥想')}" target="_blank" rel="noopener">📕 小红书 →</a>
       </div>
     </div>`).join('');
   /* 环境建议 */
@@ -1414,7 +1430,7 @@ function renderDivination(){
       </div>
       <p class="xlr-meaning">${x.meaning}</p>
       <p class="xlr-interpret">${x.interpret}</p>
-      <a class="xlr-learn" href="${biliUrl('小六壬 '+x.name)}" target="_blank" rel="noopener">📺 学习「${x.name}」→</a>
+      <a class="xlr-learn" href="${biliUrl('小六壬 '+x.name)}" target="_blank" rel="noopener">📺 B站学「${x.name}」→</a> <a class="xlr-learn" href="${xhsUrl('小六壬 '+x.name)}" target="_blank" rel="noopener">📕 小红书「${x.name}」→</a>
     </div>`).join('');
   /* 入门指南 */
   $('#divinationGuide').innerHTML=DIVINATION_GUIDE.map(g=>`<div class="dg-card">
@@ -1422,7 +1438,8 @@ function renderDivination(){
     <div class="dg-body">
       <b>${g.title}</b>
       <p>${g.desc}</p>
-      <a class="dg-link" href="${g.link}" target="_blank" rel="noopener">🎬 看入门教程 →</a>
+      <a class="dg-link" href="${g.link}" target="_blank" rel="noopener">🎬 B站教程 →</a>
+      <a class="dg-link xhs-link" href="${g.xhs}" target="_blank" rel="noopener">📕 小红书搜「${g.title}」→</a>
     </div>
   </div>`).join('');
 }
@@ -1448,7 +1465,7 @@ function showTarotDetail(i){
         <p>${c.reversed}</p>
       </div>
     </div>
-    <a class="card-deep-link" href="${biliUrl('塔罗牌 '+c.name)}" target="_blank" rel="noopener" style="margin-top:10px">📺 深入学习「${c.name}」<small>→</small></a>
+    <a class="card-deep-link" href="${biliUrl('塔罗牌 '+c.name)}" target="_blank" rel="noopener" style="margin-top:10px">📺 B站学「${c.name}」<small>→</small></a> <a class="card-deep-link" href="${xhsUrl('塔罗牌 '+c.name)}" target="_blank" rel="noopener" style="margin-top:10px">📕 小红书 <small>→</small></a>
   </div>`;
 }
 document.addEventListener('click',e=>{
@@ -1468,7 +1485,7 @@ $('#dailyDrawBtn').addEventListener('click',()=>{
       <b>${isUpright?'▲ 正位解读':'▼ 逆位解读'}</b>
       <p style="margin-top:6px">${isUpright?c.upright:c.reversed}</p>
     </div>
-    <a class="card-deep-link" href="${biliUrl('塔罗 '+c.name+' '+c.en)}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">📺 深入了解这张牌 →</a>
+    <a class="card-deep-link" href="${biliUrl('塔罗 '+c.name+' '+c.en)}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">📺 B站学这张牌 →</a> <a class="card-deep-link" href="${xhsUrl('塔罗 '+c.name+' '+c.en)}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">📕 小红书看这张牌 →</a>
   </div>`;
   markActive();
 });
